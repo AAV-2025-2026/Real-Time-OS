@@ -20,7 +20,7 @@ def execute(command: str, output: bool = False) -> str:
         print(result.stdout)
     return result.stdout
 
-def build(rpi: bool):
+def build_bcm(rpi: bool, binary_name: str):
     qcc_path = shutil.which("qcc")
     if (qcc_path is None):
         print("qcc not found")
@@ -42,7 +42,7 @@ def build(rpi: bool):
             if file.endswith((".c", ".cpp")):
                 files_to_compile.append(os.path.join(root, file))
 
-    execute(f"{qcc_path} -o {BINARY_NAME} {' '.join(flags)} {' '.join(files_to_compile)}", output=True)
+    execute(f"{qcc_path} -o {binary_name} {' '.join(flags)} {' '.join(files_to_compile)}", output=True)
 
 def main():
     parser = argparse.ArgumentParser()
@@ -56,7 +56,7 @@ def main():
         print("Run this script from the BodyControlModule directory.")
         exit(1)
 
-    build(args.target == 'rpi')
+    build_bcm(args.target == 'rpi', f"{BINARY_NAME}_{args.target}")
 
 if __name__ == "__main__":
     main()
