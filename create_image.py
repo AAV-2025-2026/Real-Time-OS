@@ -39,6 +39,8 @@ def make_image(rpi: bool):
     else:
         command += "--type=vbox "
 
+    os.chdir("../image/out")
+
     execute(command, True)
     if rpi:
         print("RPi image built")
