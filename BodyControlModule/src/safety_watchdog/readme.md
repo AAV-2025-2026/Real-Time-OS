@@ -5,4 +5,5 @@
 
 ### To-Do / Missing Components
 To make this code compilable and functional, the following must be added/fixed:
-1. **E-Stop Reset Logic:** Implement the recovery mechanism in `estop_protocol.cpp` to exit the halted state safely.
+1. **E-Stop Stop Logic:** Implement the functionality to send commands to the motor relay.
+2. **E-Stop Reset Logic:** Implement the recovery mechanism in `estop_protocol.cpp` to exit the halted state safely.
