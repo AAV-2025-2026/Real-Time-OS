@@ -5,7 +5,4 @@
 
 ### To-Do / Missing Components
 To make this code compilable and functional, the following must be added/fixed:
-1. **Syntax Fixes:**
-    * Add `using namespace std::chrono_literals;` for `50ms` literal.
-    * Fix template syntax in `create_subscription`.
-2. **E-Stop Reset Logic:** Implement the recovery mechanism in `estop_protocol.cpp` to exit the halted state safely.
+1. **E-Stop Reset Logic:** Implement the recovery mechanism in `estop_protocol.cpp` to exit the halted state safely.
