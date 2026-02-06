@@ -1,0 +1,4 @@
+Invoking command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/qnx': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/alex/repos/Real-Time-OS/ros2_ws/build/qnx -- -j4 -l4
+Invoked command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/qnx' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/alex/repos/Real-Time-OS/ros2_ws/build/qnx -- -j4 -l4
+Invoking command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/qnx': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/alex/repos/Real-Time-OS/ros2_ws/build/qnx
+Invoked command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/qnx' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/alex/repos/Real-Time-OS/ros2_ws/build/qnx

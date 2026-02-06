@@ -1,0 +1,2 @@
+Invoking command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/imu_bridge_qnx': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/alex/repos/Real-Time-OS/ros2_ws/src/qnx -DCMAKE_INSTALL_PREFIX=/home/alex/repos/Real-Time-OS/ros2_ws/install/imu_bridge_qnx
+Invoked command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/imu_bridge_qnx' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/alex/repos/Real-Time-OS/ros2_ws/src/qnx -DCMAKE_INSTALL_PREFIX=/home/alex/repos/Real-Time-OS/ros2_ws/install/imu_bridge_qnx

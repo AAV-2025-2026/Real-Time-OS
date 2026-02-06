@@ -1,0 +1,187 @@
+[0.000000] (-) TimerEvent: {}
+[0.001405] (imu_bridge_qnx) JobQueued: {'identifier': 'imu_bridge_qnx', 'dependencies': OrderedDict()}
+[0.001789] (imu_bridge_qnx) JobStarted: {'identifier': 'imu_bridge_qnx'}
+[0.076148] (imu_bridge_qnx) JobProgress: {'identifier': 'imu_bridge_qnx', 'progress': 'cmake'}
+[0.079854] (imu_bridge_qnx) Command: {'cmd': ['/usr/bin/cmake', '/home/alex/repos/Real-Time-OS/ros2_ws/src/qnx', '-DCMAKE_INSTALL_PREFIX=/home/alex/repos/Real-Time-OS/ros2_ws/install/imu_bridge_qnx'], 'cwd': '/home/alex/repos/Real-Time-OS/ros2_ws/build/imu_bridge_qnx', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'alex'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/alex'), ('OLDPWD', '/home/alex/repos/Real-Time-OS'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('DBUS_STARTER_BUS_TYPE', 'session'), ('SYSTEMD_EXEC_PID', '2094'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus,guid=32c0eb90c9e1a1cdc23aa17969860e9d'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'alex'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'alex'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/alex/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/alex-desktop:@/tmp/.ICE-unix/2094,unix/alex-desktop:/tmp/.ICE-unix/2094'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/834a7587_a0fc_4580_b224_ac72bb5ecf82'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.107'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/alex/repos/Real-Time-OS/ros2_ws/build/imu_bridge_qnx'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('DBUS_STARTER_ADDRESS', 'unix:path=/run/user/1000/bus,guid=32c0eb90c9e1a1cdc23aa17969860e9d'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.097673] (-) TimerEvent: {}
+[0.198597] (-) TimerEvent: {}
+[0.300231] (-) TimerEvent: {}
+[0.401869] (-) TimerEvent: {}
+[0.502711] (-) TimerEvent: {}
+[0.603764] (-) TimerEvent: {}
+[0.704847] (-) TimerEvent: {}
+[0.806541] (-) TimerEvent: {}
+[0.907629] (-) TimerEvent: {}
+[1.008725] (-) TimerEvent: {}
+[1.109918] (-) TimerEvent: {}
+[1.210918] (-) TimerEvent: {}
+[1.287714] (imu_bridge_qnx) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[1.311106] (-) TimerEvent: {}
+[1.411948] (-) TimerEvent: {}
+[1.512930] (-) TimerEvent: {}
+[1.614063] (-) TimerEvent: {}
+[1.715030] (-) TimerEvent: {}
+[1.816330] (-) TimerEvent: {}
+[1.917345] (-) TimerEvent: {}
+[2.018222] (-) TimerEvent: {}
+[2.119305] (-) TimerEvent: {}
+[2.220226] (-) TimerEvent: {}
+[2.245320] (imu_bridge_qnx) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[2.300491] (imu_bridge_qnx) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[2.320417] (-) TimerEvent: {}
+[2.421131] (-) TimerEvent: {}
+[2.522154] (-) TimerEvent: {}
+[2.623246] (-) TimerEvent: {}
+[2.724020] (-) TimerEvent: {}
+[2.733350] (imu_bridge_qnx) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[2.764834] (imu_bridge_qnx) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[2.766765] (imu_bridge_qnx) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[2.770136] (imu_bridge_qnx) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[2.787252] (imu_bridge_qnx) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[2.824220] (-) TimerEvent: {}
+[2.925070] (-) TimerEvent: {}
+[3.025967] (-) TimerEvent: {}
+[3.126718] (-) TimerEvent: {}
+[3.227908] (-) TimerEvent: {}
+[3.330987] (-) TimerEvent: {}
+[3.337051] (imu_bridge_qnx) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.380420] (imu_bridge_qnx) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[3.383747] (imu_bridge_qnx) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.386965] (imu_bridge_qnx) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.431556] (-) TimerEvent: {}
+[3.498475] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[3.531952] (-) TimerEvent: {}
+[3.634036] (-) TimerEvent: {}
+[3.737260] (-) TimerEvent: {}
+[3.839510] (-) TimerEvent: {}
+[3.941749] (-) TimerEvent: {}
+[4.043144] (-) TimerEvent: {}
+[4.144761] (-) TimerEvent: {}
+[4.246688] (-) TimerEvent: {}
+[4.348817] (-) TimerEvent: {}
+[4.449851] (-) TimerEvent: {}
+[4.551076] (-) TimerEvent: {}
+[4.652395] (-) TimerEvent: {}
+[4.754692] (-) TimerEvent: {}
+[4.856737] (-) TimerEvent: {}
+[4.958323] (-) TimerEvent: {}
+[5.059799] (-) TimerEvent: {}
+[5.161370] (-) TimerEvent: {}
+[5.262903] (-) TimerEvent: {}
+[5.365648] (-) TimerEvent: {}
+[5.466426] (-) TimerEvent: {}
+[5.567580] (-) TimerEvent: {}
+[5.668333] (-) TimerEvent: {}
+[5.769057] (-) TimerEvent: {}
+[5.869763] (-) TimerEvent: {}
+[5.970418] (-) TimerEvent: {}
+[6.071109] (-) TimerEvent: {}
+[6.172097] (-) TimerEvent: {}
+[6.178745] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[6.274194] (-) TimerEvent: {}
+[6.380796] (-) TimerEvent: {}
+[6.482362] (-) TimerEvent: {}
+[6.583886] (-) TimerEvent: {}
+[6.684781] (-) TimerEvent: {}
+[6.786254] (-) TimerEvent: {}
+[6.887038] (-) TimerEvent: {}
+[6.987960] (-) TimerEvent: {}
+[7.089162] (-) TimerEvent: {}
+[7.170703] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[7.189419] (-) TimerEvent: {}
+[7.290276] (-) TimerEvent: {}
+[7.391048] (-) TimerEvent: {}
+[7.491860] (-) TimerEvent: {}
+[7.592645] (-) TimerEvent: {}
+[7.679947] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[7.692920] (-) TimerEvent: {}
+[7.744307] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[7.793112] (-) TimerEvent: {}
+[7.834409] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[7.893366] (-) TimerEvent: {}
+[7.949670] (imu_bridge_qnx) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[7.993573] (-) TimerEvent: {}
+[8.094312] (-) TimerEvent: {}
+[8.099660] (imu_bridge_qnx) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[8.194564] (-) TimerEvent: {}
+[8.295354] (-) TimerEvent: {}
+[8.396123] (-) TimerEvent: {}
+[8.496871] (-) TimerEvent: {}
+[8.534572] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[8.570472] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[8.597187] (-) TimerEvent: {}
+[8.697900] (-) TimerEvent: {}
+[8.798637] (-) TimerEvent: {}
+[8.899457] (-) TimerEvent: {}
+[9.000169] (-) TimerEvent: {}
+[9.100928] (-) TimerEvent: {}
+[9.201914] (-) TimerEvent: {}
+[9.302799] (-) TimerEvent: {}
+[9.324427] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[9.403007] (-) TimerEvent: {}
+[9.503794] (-) TimerEvent: {}
+[9.604500] (-) TimerEvent: {}
+[9.649835] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[9.704685] (-) TimerEvent: {}
+[9.805398] (-) TimerEvent: {}
+[9.906166] (-) TimerEvent: {}
+[10.006913] (-) TimerEvent: {}
+[10.107671] (-) TimerEvent: {}
+[10.161892] (imu_bridge_qnx) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[10.207957] (-) TimerEvent: {}
+[10.263304] (imu_bridge_qnx) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[10.308289] (-) TimerEvent: {}
+[10.409217] (-) TimerEvent: {}
+[10.509977] (-) TimerEvent: {}
+[10.610798] (-) TimerEvent: {}
+[10.711221] (imu_bridge_qnx) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[10.711956] (-) TimerEvent: {}
+[10.714082] (imu_bridge_qnx) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[10.812174] (-) TimerEvent: {}
+[10.912998] (-) TimerEvent: {}
+[11.014144] (-) TimerEvent: {}
+[11.114994] (-) TimerEvent: {}
+[11.134650] (imu_bridge_qnx) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[11.141029] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[11.215219] (-) TimerEvent: {}
+[11.315985] (-) TimerEvent: {}
+[11.416760] (-) TimerEvent: {}
+[11.517650] (-) TimerEvent: {}
+[11.560359] (imu_bridge_qnx) StdoutLine: {'line': b'-- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[11.617840] (-) TimerEvent: {}
+[11.718637] (-) TimerEvent: {}
+[11.819387] (-) TimerEvent: {}
+[11.920086] (-) TimerEvent: {}
+[12.020879] (-) TimerEvent: {}
+[12.122082] (-) TimerEvent: {}
+[12.191401] (imu_bridge_qnx) StdoutLine: {'line': b'-- Configuring done\n'}
+[12.222249] (-) TimerEvent: {}
+[12.225718] (imu_bridge_qnx) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:14 (add_executable):\n'}
+[12.226372] (imu_bridge_qnx) StderrLine: {'line': b'  Cannot find source file:\n'}
+[12.226797] (imu_bridge_qnx) StderrLine: {'line': b'\n'}
+[12.227149] (imu_bridge_qnx) StderrLine: {'line': b'    src/imu_bridge_qnx_functionality.cpp\n'}
+[12.227575] (imu_bridge_qnx) StderrLine: {'line': b'\n'}
+[12.228022] (imu_bridge_qnx) StderrLine: {'line': b'  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h\n'}
+[12.228359] (imu_bridge_qnx) StderrLine: {'line': b'  .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc\n'}
+[12.228680] (imu_bridge_qnx) StderrLine: {'line': b'\n'}
+[12.229013] (imu_bridge_qnx) StderrLine: {'line': b'\x1b[0m\n'}
+[12.230172] (imu_bridge_qnx) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:14 (add_executable):\n'}
+[12.230665] (imu_bridge_qnx) StderrLine: {'line': b'  No SOURCES given to target: imu_bridge_qnx_functionality\n'}
+[12.231027] (imu_bridge_qnx) StderrLine: {'line': b'\n'}
+[12.231446] (imu_bridge_qnx) StderrLine: {'line': b'\x1b[0m\n'}
+[12.231823] (imu_bridge_qnx) StderrLine: {'line': b'\x1b[0mCMake Generate step failed.  Build files cannot be regenerated correctly.\x1b[0m\n'}
+[12.273420] (imu_bridge_qnx) CommandEnded: {'returncode': 1}
+[12.323821] (-) TimerEvent: {}
+[12.424908] (-) TimerEvent: {}
+[12.526262] (-) TimerEvent: {}
+[12.627668] (-) TimerEvent: {}
+[12.728992] (-) TimerEvent: {}
+[12.830288] (-) TimerEvent: {}
+[12.931665] (-) TimerEvent: {}
+[13.033013] (-) TimerEvent: {}
+[13.134326] (-) TimerEvent: {}
+[13.235682] (-) TimerEvent: {}
+[13.337032] (-) TimerEvent: {}
+[13.438669] (-) TimerEvent: {}
+[13.487956] (imu_bridge_qnx) JobEnded: {'identifier': 'imu_bridge_qnx', 'rc': 1}
+[13.500565] (-) EventReactorShutdown: {}

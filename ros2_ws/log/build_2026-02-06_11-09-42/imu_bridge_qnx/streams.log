@@ -1,0 +1,48 @@
+[0.082s] Invoking command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/imu_bridge_qnx': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/alex/repos/Real-Time-OS/ros2_ws/src/qnx -DCMAKE_INSTALL_PREFIX=/home/alex/repos/Real-Time-OS/ros2_ws/install/imu_bridge_qnx
+[1.286s] -- The C compiler identification is GNU 11.4.0
+[2.244s] -- The CXX compiler identification is GNU 11.4.0
+[2.299s] -- Detecting C compiler ABI info
+[2.732s] -- Detecting C compiler ABI info - done
+[2.763s] -- Check for working C compiler: /usr/bin/cc - skipped
+[2.765s] -- Detecting C compile features
+[2.769s] -- Detecting C compile features - done
+[2.786s] -- Detecting CXX compiler ABI info
+[3.336s] -- Detecting CXX compiler ABI info - done
+[3.380s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[3.384s] -- Detecting CXX compile features
+[3.386s] -- Detecting CXX compile features - done
+[3.499s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[6.178s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[7.169s] -- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)
+[7.679s] -- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[7.743s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[7.833s] -- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[7.948s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[8.098s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[8.533s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[8.569s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[9.323s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[9.648s] -- Found FastRTPS: /opt/ros/humble/include  
+[10.160s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[10.262s] -- Looking for pthread.h
+[10.710s] -- Looking for pthread.h - found
+[10.713s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[11.133s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[11.140s] -- Found Threads: TRUE  
+[11.559s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[12.190s] -- Configuring done
+[12.224s] [31mCMake Error at CMakeLists.txt:14 (add_executable):
+[12.225s]   Cannot find source file:
+[12.225s] 
+[12.226s]     src/imu_bridge_qnx_functionality.cpp
+[12.226s] 
+[12.226s]   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h
+[12.227s]   .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc
+[12.227s] 
+[12.227s] [0m
+[12.229s] [31mCMake Error at CMakeLists.txt:14 (add_executable):
+[12.229s]   No SOURCES given to target: imu_bridge_qnx_functionality
+[12.229s] 
+[12.230s] [0m
+[12.230s] [0mCMake Generate step failed.  Build files cannot be regenerated correctly.[0m
+[12.272s] Invoked command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/imu_bridge_qnx' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/alex/repos/Real-Time-OS/ros2_ws/src/qnx -DCMAKE_INSTALL_PREFIX=/home/alex/repos/Real-Time-OS/ros2_ws/install/imu_bridge_qnx

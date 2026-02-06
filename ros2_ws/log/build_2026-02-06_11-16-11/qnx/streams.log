@@ -1,0 +1,61 @@
+[0.070s] Invoking command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/qnx': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/alex/repos/Real-Time-OS/ros2_ws/src/qnx -DCMAKE_INSTALL_PREFIX=/home/alex/repos/Real-Time-OS/ros2_ws/install/qnx
+[0.462s] -- The C compiler identification is GNU 11.4.0
+[0.879s] -- The CXX compiler identification is GNU 11.4.0
+[0.921s] -- Detecting C compiler ABI info
+[1.321s] -- Detecting C compiler ABI info - done
+[1.352s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.353s] -- Detecting C compile features
+[1.355s] -- Detecting C compile features - done
+[1.368s] -- Detecting CXX compiler ABI info
+[1.780s] -- Detecting CXX compiler ABI info - done
+[1.811s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.812s] -- Detecting CXX compile features
+[1.814s] -- Detecting CXX compile features - done
+[1.845s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.699s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[3.384s] -- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)
+[3.794s] -- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[3.848s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[3.919s] -- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[4.008s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.128s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.469s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[4.495s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[5.168s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[5.488s] -- Found FastRTPS: /opt/ros/humble/include  
+[6.000s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[6.085s] -- Looking for pthread.h
+[6.483s] -- Looking for pthread.h - found
+[6.485s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[6.885s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[6.891s] -- Found Threads: TRUE  
+[7.208s] -- Found sensor_msgs: 4.9.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[7.708s] -- Configuring done
+[7.783s] -- Generating done
+[7.805s] -- Build files have been written to: /home/alex/repos/Real-Time-OS/ros2_ws/build/qnx
+[7.842s] Invoked command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/qnx' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/alex/repos/Real-Time-OS/ros2_ws/src/qnx -DCMAKE_INSTALL_PREFIX=/home/alex/repos/Real-Time-OS/ros2_ws/install/qnx
+[7.854s] Invoking command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/qnx': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/alex/repos/Real-Time-OS/ros2_ws/build/qnx -- -j4 -l4
+[8.112s] [ 50%] [32mBuilding CXX object CMakeFiles/qnx.dir/src/test_Sub.cpp.o[0m
+[51.529s] [100%] [32m[1mLinking CXX executable qnx[0m
+[53.975s] [100%] Built target qnx
+[54.058s] Invoked command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/qnx' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/alex/repos/Real-Time-OS/ros2_ws/build/qnx -- -j4 -l4
+[54.120s] Invoking command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/qnx': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/alex/repos/Real-Time-OS/ros2_ws/build/qnx
+[54.155s] -- Install configuration: ""
+[54.156s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/lib/qnx/qnx
+[54.192s] -- Set runtime path of "/home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/lib/qnx/qnx" to ""
+[54.194s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/ament_index/resource_index/package_run_dependencies/qnx
+[54.196s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/ament_index/resource_index/parent_prefix_path/qnx
+[54.201s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/environment/ament_prefix_path.sh
+[54.202s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/environment/ament_prefix_path.dsv
+[54.204s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/environment/path.sh
+[54.206s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/environment/path.dsv
+[54.208s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/local_setup.bash
+[54.210s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/local_setup.sh
+[54.213s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/local_setup.zsh
+[54.215s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/local_setup.dsv
+[54.217s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/package.dsv
+[54.220s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/ament_index/resource_index/packages/qnx
+[54.222s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/cmake/qnxConfig.cmake
+[54.224s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/cmake/qnxConfig-version.cmake
+[54.226s] -- Installing: /home/alex/repos/Real-Time-OS/ros2_ws/install/qnx/share/qnx/package.xml
+[54.238s] Invoked command in '/home/alex/repos/Real-Time-OS/ros2_ws/build/qnx' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/alex/repos/Real-Time-OS/ros2_ws/build/qnx
