@@ -30,7 +30,6 @@ private:
     std::optional<std::pair<time_point<steady_clock>, LocationData>> m_location;
 };
 
-
 }
 
 #endif
