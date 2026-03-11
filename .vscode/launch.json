@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "configurations": [
+    {
+      "type": "qnx-gdb",
+      "request": "launch",
+      "name": "QNX: command_processor",
+      "gdb": "gdb",
+      "program": "${command:qnx.autodetectBinary}",
+      "remotePath": "command_processor",
+      "qnxtarget": "default",
+      "upload": true,
+      "stopAtEntry": true,
+      "preLaunchTask": "${defaultBuildTask}"
+    },
+    {
+      "type": "qnx-gdb",
+      "request": "launch",
+      "name": "build/x86_64-debug/command_processor",
+      "gdb": "gdb",
+      "program": "build/x86_64-debug/command_processor",
+      "remotePath": "command_processor",
+      "qnxtarget": "default",
+      "upload": true,
+      "stopAtEntry": true,
+      "preLaunchTask": "${defaultBuildTask}"
+    }
+  ]
+}
