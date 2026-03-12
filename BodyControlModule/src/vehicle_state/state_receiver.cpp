@@ -4,6 +4,7 @@
 #include <cstdint>
 
 namespace vehicle_state {
+/*
 
 StateReceiver::StateReceiver(int portNumber = 5000) : m_portNumber(portNumber){}
 
@@ -44,7 +45,6 @@ void StateReceiver::start() {
 
             switch (message_type) {
             case constant expression:
-                /* code */
                 break;
             default:
                 break;
@@ -55,5 +55,5 @@ void StateReceiver::start() {
     });
 }
 
-
+*/
 } // namespace vehicle_state
