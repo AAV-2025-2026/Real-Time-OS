@@ -1,7 +1,9 @@
 #include "state_sender.hpp"
 #include <cstdio>
+#include <cstring>
 #include <unistd.h>
 #include <mqueue.h>
+#include "dbstruct.h"
 
 namespace vehicle_state {
 
@@ -54,9 +56,11 @@ void StateSender::sendLocation(const LocationData& location) {
            (struct sockaddr*)&m_serverAddr, sizeof(m_serverAddr));
 
     // Send to DB
-
-    // int rc = mq_send(m_mqueue, const char *msg_ptr, size_t msg_len, unsigned int msg_prio)
-    
+    DB_t db_msg;
+    strncpy(db_msg.table, "states", sizeof(db_msg.table));
+    strncpy(db_msg.id, "GPS", sizeof(db_msg.id));
+    strncpy(db_msg.msg, buffer, sizeof(buffer));
+    int rc = mq_send(m_mqueue, (char *) &db_msg, sizeof(db_msg), 0);    
 }
 
 void StateSender::sendSpeed(const SpeedData& speed) {
@@ -68,6 +72,13 @@ void StateSender::sendSpeed(const SpeedData& speed) {
 
     sendto(m_socketFD, buffer, strlen(buffer), 0,
            (struct sockaddr*)&m_serverAddr, sizeof(m_serverAddr));
+
+    // Send to DB
+    DB_t db_msg;
+    strncpy(db_msg.table, "states", sizeof(db_msg.table));
+    strncpy(db_msg.id, "IMU", sizeof(db_msg.id));
+    strncpy(db_msg.msg, buffer, sizeof(buffer));
+    int rc = mq_send(m_mqueue, (char *) &db_msg, sizeof(db_msg), 0);   
 }
 
 void StateSender::sendGear(const Gear& gear) {
