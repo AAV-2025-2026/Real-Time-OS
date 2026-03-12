@@ -1,10 +1,16 @@
 #include <iostream>
 #include "vehicle_state/vehicle_state.hpp"
+#include "vehicle_state/manual_input.hpp"
+#include <memory>
 
 int main() {
     std::cout << "Hello QNX!\n";
 
-    vehicle_state::VehicleState state;
+    auto state = std::make_shared<vehicle_state::VehicleState>();
+
+    vehicle_state::ManualInput input(state);
+    input.readInput();
+    while(true);
 
     /*
     In a loop

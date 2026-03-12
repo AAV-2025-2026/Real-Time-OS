@@ -3,8 +3,7 @@
 
 namespace vehicle_state {
 
-VehicleState::VehicleState() {
-
+VehicleState::VehicleState() : m_sender("127.0.0.1", 5000) {
 }
 
 void VehicleState::setSpeed(const SpeedData& value) {
@@ -21,7 +20,7 @@ void VehicleState::setSpeed(const SpeedData& value) {
 }
 
 void VehicleState::setDirection(const DirectionData& value) {
-    
+
 }
 
 void VehicleState::setLocation(const LocationData& value){

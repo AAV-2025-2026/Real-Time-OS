@@ -7,7 +7,7 @@
 #include <arpa/inet.h>
 #include <cstring>
 #include <mqueue.h>
-#include <string>
+
 namespace vehicle_state {
 class StateSender {
 public:
