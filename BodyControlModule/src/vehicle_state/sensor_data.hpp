@@ -1,6 +1,7 @@
 #ifndef SENSOR_DATA_HPP
 #define SENSOR_DATA_HPP
 
+#include <cstdint>
 namespace vehicle_state {
 
 /**
@@ -19,6 +20,11 @@ struct LocationData {
     double latitude, longitude;
 };
 
+enum class Gear : uint8_t {
+    Park = 0,
+    Drive = 1,
+    Reverse = 2
+};
 
 } // namespace vehicle_state
 

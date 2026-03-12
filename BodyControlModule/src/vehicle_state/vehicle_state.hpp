@@ -19,7 +19,7 @@ public:
 
     void setSpeed(const SpeedData& value);
     void setDirection(const DirectionData& value);
-    void setLocation(const DirectionData& value);
+    void setLocation(const LocationData& value);
 
     std::optional<std::pair<time_point<steady_clock>, SpeedData>> getSpeed();
     std::optional<std::pair<time_point<steady_clock>, DirectionData>> getDirection();
