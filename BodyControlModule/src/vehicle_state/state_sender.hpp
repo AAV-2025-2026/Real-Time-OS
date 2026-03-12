@@ -6,6 +6,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <cstring>
+#include <mqueue.h>
+#include <string>
 namespace vehicle_state {
 class StateSender {
 public:
@@ -15,9 +17,13 @@ public:
     void sendSpeed(const SpeedData&);
     void sendGear(const Gear&);
 private:
-    int socket_fd;
-    struct sockaddr_in server_addr;
+    int m_socketFD;
+    struct sockaddr_in m_serverAddr;
+    mqd_t m_mqueue;
+
     void initSocket(const char* server_ip, int port);
+    void initMQueue();
+
 };
 }
 

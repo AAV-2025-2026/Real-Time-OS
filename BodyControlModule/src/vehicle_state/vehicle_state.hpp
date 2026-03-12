@@ -5,6 +5,7 @@
 #include <optional>
 #include <utility>
 #include "sensor_data.hpp"
+#include "state_sender.hpp"
 
 namespace vehicle_state {
 using namespace std::chrono;
@@ -25,6 +26,8 @@ public:
     std::optional<std::pair<time_point<steady_clock>, DirectionData>> getDirection();
     std::optional<std::pair<time_point<steady_clock>, LocationData>> getLocation();
 private:
+    StateSender m_sender;
+
     std::optional<std::pair<time_point<steady_clock>, SpeedData>> m_speed;
     std::optional<std::pair<time_point<steady_clock>, DirectionData>> m_direction;
     std::optional<std::pair<time_point<steady_clock>, LocationData>> m_location;
