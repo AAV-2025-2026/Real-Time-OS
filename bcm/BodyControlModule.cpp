@@ -1,6 +1,8 @@
+#include <chrono>
 #include <iostream>
 #include "VehicleState.hpp"
 #include <memory>
+#include <thread>
 #include "TerminalUpdateReceiver.hpp"
 
 int main() {
@@ -11,9 +13,12 @@ int main() {
     TerminalUpdateReceiver updateReciver(vehicleState);
     updateReciver.start();
 
-    while(true);
+    while(true) {
+        vehicleState->printState();
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
 
     updateReciver.stop();
-    
+
     return 0;
 }

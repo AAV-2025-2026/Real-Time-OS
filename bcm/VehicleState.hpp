@@ -12,9 +12,11 @@ public:
     bool setSpeed(const SpeedState& newSpeed);
     std::optional<SpeedState> getSpeed();
 
+    void printState();
+
 private:
     std::shared_ptr<UpdateSender> m_updater;
-    std::optional<SpeedState> m_speed;
+    std::optional<StateObject<SpeedState>> m_speed;
 };
 
 #endif
