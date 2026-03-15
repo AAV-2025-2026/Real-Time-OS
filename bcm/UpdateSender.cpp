@@ -49,21 +49,21 @@ UpdateSender::UpdateSender() {
     }
     std::cout << "mqueue successfully opened\n";
 
-
+    // Setup ROS stuff
 }
 
 bool UpdateSender::updateSpeed(const SpeedState& newSpeed) {
+    bool success = true;
     if (!updateSpeedDB(newSpeed)) {
         std::cerr << "Failed to update the database with a new speed value" << std::endl;
-        return false;
+        success = false;
     }
     if (!updateSpeedROS(newSpeed)) {
         std::cerr << "Failed to update ROS with a new speed value" << std::endl;
-        return false;
+        success = false;
     }
     
-    std::cout << "I have sent the updated state to the relevant parties" << std::endl;
-    return true;
+    return success;
 }
 
 bool UpdateSender::updateSpeedDB(const SpeedState& newSpeed) {
@@ -76,5 +76,71 @@ bool UpdateSender::updateSpeedDB(const SpeedState& newSpeed) {
 
 bool UpdateSender::updateSpeedROS(const SpeedState& newSpeed) {
     std::cout << "Unimplemented speed update over ROS\n";
+    // Implement this
+    return true;
+}
+
+bool UpdateSender::updateDirection(const DirectionState& newDirection) {
+    bool success = true;
+    if (!updateDirectionDB(newDirection)) {
+        std::cerr << "Failed to update the database with a new direction value" << std::endl;
+        success = false;
+    }
+    if (!updateDirectionROS(newDirection)) {
+        std::cerr << "Failed to update ROS with a new direction value" << std::endl;
+        success = false;
+    }
+
+    return success;
+}
+
+bool UpdateSender::updateDirectionDB(const DirectionState& newDirection) {
+    std::string directionString = "Direction: " + std::to_string(newDirection.direction);
+    std::vector<char> data(directionString.begin(), directionString.end());
+    data.push_back('\0');
+
+    return sendDBMsg(m_mqueue, "sensors", 1, data, MQ_PRIORITY);
+}
+
+bool UpdateSender::updateDirectionROS(const DirectionState& newDirection) {
+    // Need to implement
+    return true;
+}
+
+bool UpdateSender::updateLocation(const LocationState& newLocation) {
+    bool success = true;
+    if (!updateLocationDB(newLocation)) {
+        std::cerr << "Failed to update the database with a new location value" << std::endl;
+        success = false;
+    }
+    if (!updateLocationROS(newLocation)) {
+        std::cerr << "Failed to update ROS with a new location value" << std::endl;
+        success = false;
+    }
+    return success;
+}
+
+bool UpdateSender::updateLocationDB(const LocationState& newLocation) {
+    std::string locationString = "Location: x: " + std::to_string(newLocation.x) + ", y: " + std::to_string(newLocation.y);
+    std::vector<char> data(locationString.begin(), locationString.end());
+    data.push_back('\0');
+
+    return sendDBMsg(m_mqueue, "sensors", 1, data, MQ_PRIORITY);
+}
+
+bool UpdateSender::updateLocationROS(const LocationState& newLocation) {
+    return true;
+}
+
+bool UpdateSender::updateGear(const Gear& newGear) {
+    bool success = true;
+    if (!updateGearROS(newGear)) {
+        std::cerr << "Failed to update ROS with a new Gear value" << std::endl;
+        success = false;
+    }
+    return success;
+}
+
+bool UpdateSender::updateGearROS(const Gear& newGear) {
     return true;
 }

@@ -20,10 +20,21 @@ class UpdateSender {
 public:
     UpdateSender();
     bool updateSpeed(const SpeedState& newSpeed);
+    bool updateDirection(const DirectionState& newDirection);
+    bool updateLocation(const LocationState& newLocation);
+    bool updateGear(const Gear& newGear);
 
 private:
     bool updateSpeedDB(const SpeedState& newSpeed);
     bool updateSpeedROS(const SpeedState& newSpeed);
+
+    bool updateDirectionDB(const DirectionState& newDirection);
+    bool updateDirectionROS(const DirectionState& newDirection);
+
+    bool updateLocationDB(const LocationState& newLocation);
+    bool updateLocationROS(const LocationState& newLocation);
+
+    bool updateGearROS(const Gear& newGear);
 
     static constexpr const char* DB_MQUEUE_NAME = "/db_queue";
     static constexpr const int MQ_PRIORITY = 1;
