@@ -15,7 +15,7 @@ int main() {
 
     while(true) {
         vehicleState->printState();
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(10));
     }
 
     updateReciver.stop();
