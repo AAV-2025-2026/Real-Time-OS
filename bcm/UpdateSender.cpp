@@ -12,16 +12,16 @@
 #include <string.h>
 #include <vector>
 
-bool sendDBMsg(const mqd_t& mq, std::string_view tableName, const int id, const std::vector<char> &data, const unsigned int priority) {    
+bool sendDBMsg(const mqd_t& mq, std::string_view tableName, std::string_view id, const std::vector<char> &data, const unsigned int priority) {    
     DB_t msg;
 
-    if (data.size() > sizeof(msg.table) || tableName.size() > sizeof(msg.table)) {
+    if (data.size() > sizeof(msg.table) || tableName.size() > sizeof(msg.table) || id.size() > sizeof(msg.id)) {
         std::cerr << "Attempting to send too much data in mqueue" << std::endl;
         return false;
     }
 
     strncpy(msg.table, tableName.data(), sizeof(msg.table));
-    strncpy(msg.id, std::to_string(id).c_str(), sizeof(msg.id));
+    strncpy(msg.id, id.data(), sizeof(msg.id));
     strncpy(msg.msg, data.data(), sizeof(msg.msg));
 
     int rc = mq_send(mq, reinterpret_cast<char *>(&msg), sizeof(msg), priority);
@@ -71,7 +71,7 @@ bool UpdateSender::updateSpeedDB(const SpeedState& newSpeed) {
     std::vector<char> data(speedString.begin(), speedString.end());
     data.push_back('\0');
 
-    return sendDBMsg(m_mqueue, "sensors", 1, data, MQ_PRIORITY);
+    return sendDBMsg(m_mqueue, DB_MQUEUE_NAME, DB_ID_NAME, data, MQ_PRIORITY);
 }
 
 bool UpdateSender::updateSpeedROS(const SpeedState& newSpeed) {
@@ -99,7 +99,7 @@ bool UpdateSender::updateDirectionDB(const DirectionState& newDirection) {
     std::vector<char> data(directionString.begin(), directionString.end());
     data.push_back('\0');
 
-    return sendDBMsg(m_mqueue, "sensors", 1, data, MQ_PRIORITY);
+    return sendDBMsg(m_mqueue, DB_MQUEUE_NAME, DB_ID_NAME, data, MQ_PRIORITY);
 }
 
 bool UpdateSender::updateDirectionROS(const DirectionState& newDirection) {
@@ -125,7 +125,7 @@ bool UpdateSender::updateLocationDB(const LocationState& newLocation) {
     std::vector<char> data(locationString.begin(), locationString.end());
     data.push_back('\0');
 
-    return sendDBMsg(m_mqueue, "sensors", 1, data, MQ_PRIORITY);
+    return sendDBMsg(m_mqueue, DB_MQUEUE_NAME, DB_ID_NAME, data, MQ_PRIORITY);
 }
 
 bool UpdateSender::updateLocationROS(const LocationState& newLocation) {

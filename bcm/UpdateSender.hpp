@@ -6,7 +6,7 @@
 #include <mqueue.h>
 #include <string_view>
 
-bool sendDBMsg(const mqd_t& mq, std::string_view tableName, const int id, const std::vector<char>& data, const unsigned int priority);
+bool sendDBMsg(const mqd_t& mq, std::string_view tableName, std::string_view id, const std::vector<char>& data, const unsigned int priority);
 
 /**
     This Class Has to update relevant components when the vehicle state is updated
@@ -37,7 +37,9 @@ private:
     bool updateGearROS(const Gear& newGear);
 
     static constexpr const char* DB_MQUEUE_NAME = "/db_queue";
-    static constexpr const int MQ_PRIORITY = 1;
+    static constexpr const int MQ_PRIORITY = 0;
+    static constexpr const char* DB_TABLE_NAME = "states";
+    static constexpr const char* DB_ID_NAME = "BCM";
     mqd_t m_mqueue;
 
 };
