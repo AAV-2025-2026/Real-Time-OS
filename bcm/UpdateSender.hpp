@@ -2,6 +2,8 @@
 #define UPDATE_SENDER_HPP
 
 #include "StateStructures.hpp"
+#include "UDPClient.hpp"
+#include <memory>
 #include <vector>
 #include <mqueue.h>
 #include <string_view>
@@ -18,7 +20,7 @@ bool sendDBMsg(const mqd_t& mq, std::string_view tableName, std::string_view id,
 */
 class UpdateSender {
 public:
-    UpdateSender();
+    UpdateSender(std::shared_ptr<UDPClient> publisher);
     bool updateSpeed(const SpeedState& newSpeed);
     bool updateDirection(const DirectionState& newDirection);
     bool updateLocation(const LocationState& newLocation);
@@ -40,8 +42,9 @@ private:
     static constexpr const int MQ_PRIORITY = 0;
     static constexpr const char* DB_TABLE_NAME = "states";
     static constexpr const char* DB_ID_NAME = "BCM";
-    mqd_t m_mqueue;
 
+    mqd_t m_mqueue;
+    std::shared_ptr<UDPClient> m_publisher;
 };
 
 #endif

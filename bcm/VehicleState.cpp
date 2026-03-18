@@ -1,13 +1,14 @@
 #include "VehicleState.hpp"
 #include "StateStructures.hpp"
+#include "UDPClient.hpp"
 #include "UpdateSender.hpp"
 #include <cstdint>
 #include <iostream>
 #include <memory>
 #include <optional>
 
-VehicleState::VehicleState() {
-    m_updater = std::make_shared<UpdateSender>();
+VehicleState::VehicleState(std::shared_ptr<UDPClient> updatePublisher) {
+    m_updater = std::make_shared<UpdateSender>(updatePublisher);
 }
 
 bool VehicleState::setSpeed(const SpeedState& newSpeed) {

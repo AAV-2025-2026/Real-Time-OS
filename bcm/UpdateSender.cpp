@@ -3,12 +3,15 @@
 #include <cerrno>
 #include <chrono>
 #include <cstdio>
+#include <cstring>
 #include <fcntl.h>
 #include <iostream>
+#include <memory>
 #include <mqueue.h>
 #include <string>
 #include <thread>
 #include "../Database/dbstruct.h"
+#include "UDPClient.hpp"
 #include <string.h>
 #include <vector>
 
@@ -36,7 +39,8 @@ bool sendDBMsg(const mqd_t& mq, std::string_view tableName, std::string_view id,
     return true;
 }
 
-UpdateSender::UpdateSender() {
+UpdateSender::UpdateSender(std::shared_ptr<UDPClient> publisher) : m_publisher(publisher) {
+    // Setup MQueue stuff
     std::cout << "Trying to open mqueue" << std::endl;
     while (true) {
         m_mqueue = mq_open(DB_MQUEUE_NAME, O_WRONLY);
@@ -48,8 +52,6 @@ UpdateSender::UpdateSender() {
         std::cerr << "Trying to open mqueue again" << std::endl;
     }
     std::cout << "mqueue successfully opened\n";
-
-    // Setup ROS stuff
 }
 
 bool UpdateSender::updateSpeed(const SpeedState& newSpeed) {
@@ -75,9 +77,9 @@ bool UpdateSender::updateSpeedDB(const SpeedState& newSpeed) {
 }
 
 bool UpdateSender::updateSpeedROS(const SpeedState& newSpeed) {
-    std::cout << "Unimplemented speed update over ROS\n";
-    // Implement this
-    return true;
+    std::vector<char> data(sizeof(newSpeed.speed));
+    std::memcpy(data.data(), &newSpeed.speed, sizeof(newSpeed.speed));
+    return m_publisher->sendData(data);
 }
 
 bool UpdateSender::updateDirection(const DirectionState& newDirection) {
@@ -103,8 +105,9 @@ bool UpdateSender::updateDirectionDB(const DirectionState& newDirection) {
 }
 
 bool UpdateSender::updateDirectionROS(const DirectionState& newDirection) {
-    // Need to implement
-    return true;
+    std::vector<char> data(sizeof(newDirection.direction));
+    std::memcpy(data.data(), &newDirection.direction, sizeof(newDirection.direction));
+    return m_publisher->sendData(data);
 }
 
 bool UpdateSender::updateLocation(const LocationState& newLocation) {
@@ -129,7 +132,9 @@ bool UpdateSender::updateLocationDB(const LocationState& newLocation) {
 }
 
 bool UpdateSender::updateLocationROS(const LocationState& newLocation) {
-    return true;
+        std::vector<char> data(sizeof(newLocation));
+    std::memcpy(data.data(), &newLocation, sizeof(newLocation));
+    return m_publisher->sendData(data);
 }
 
 bool UpdateSender::updateGear(const Gear& newGear) {
@@ -142,5 +147,7 @@ bool UpdateSender::updateGear(const Gear& newGear) {
 }
 
 bool UpdateSender::updateGearROS(const Gear& newGear) {
-    return true;
+    std::vector<char> data(sizeof(newGear));
+    std::memcpy(data.data(), &newGear, sizeof(newGear));
+    return m_publisher->sendData(data);
 }

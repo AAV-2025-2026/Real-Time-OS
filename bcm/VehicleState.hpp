@@ -8,7 +8,7 @@
 
 class VehicleState {
 public:
-    VehicleState();
+    VehicleState(std::shared_ptr<UDPClient> updatePublisher);
 
     bool setSpeed(const SpeedState& newSpeed);
     std::optional<StateObject<SpeedState>> getSpeed() {return m_speed;}
