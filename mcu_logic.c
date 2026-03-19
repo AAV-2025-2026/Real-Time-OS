@@ -33,17 +33,24 @@ static int forward_command(MCULogic *mcu, const PoolEntry *cmd)
                           (const struct sockaddr *)&mcu->mcu_addr,
                           sizeof(mcu->mcu_addr));
 
-    if (sent < 0) {
+    // Log send time for database entry
+    struct timespec send_time;
+    clock_gettime(CLOCK_MONOTONIC, &send_time);
+
+    if (sent < 0)
+    {
         perror("mcu: forward_command: sendto");
         return -1;
     }
 
-    if ((size_t)sent != ACKERMANN_PAYLOAD_SIZE) {
+    if ((size_t)sent != ACKERMANN_PAYLOAD_SIZE)
+    {
         fprintf(stderr, "mcu: forward_command: partial send (%zd / %u bytes)\n",
                 sent, (unsigned)ACKERMANN_PAYLOAD_SIZE);
         return -1;
     }
 
+    // CMD SENT SUCCESSFULLY ADD INFO TO DATABASE cmd->ackermann_bytes, cmd->priority, cmd->valid_until, send_time
     return 0;
 }
 
@@ -55,11 +62,13 @@ static void *mcu_thread(void *arg)
 {
     MCULogic *mcu = (MCULogic *)arg;
 
-    while (mcu->running) {
+    while (mcu->running)
+    {
         /* --- 1. Block until the highest-priority valid command is available.
          *        pool_pop_best handles expiry and ordering internally.    --- */
         PoolEntry current;
-        if (pool_pop_best(mcu->pool, &current) != 0) {
+        if (pool_pop_best(mcu->pool, &current) != 0)
+        {
             fprintf(stderr, "mcu_thread: pool_pop_best error\n");
             continue;
         }
@@ -70,7 +79,8 @@ static void *mcu_thread(void *arg)
          *        system task between the two calls.                       --- */
         struct timespec now;
         clock_gettime(CLOCK_MONOTONIC, &now);
-        if (!ts_after(&current.valid_until, &now)) {
+        if (!ts_after(&current.valid_until, &now))
+        {
             continue;
         }
 
@@ -92,13 +102,14 @@ int mcu_init(MCULogic *mcu, CommandPool *pool,
         return -1;
 
     memset(mcu, 0, sizeof(*mcu));
-    mcu->pool    = pool;
+    mcu->pool = pool;
     mcu->running = 0;
     mcu->sock_fd = -1;
 
     /* Open outbound UDP socket (connectionless). */
     mcu->sock_fd = socket(AF_INET, SOCK_DGRAM, 0);
-    if (mcu->sock_fd < 0) {
+    if (mcu->sock_fd < 0)
+    {
         perror("mcu_init: socket");
         return -1;
     }
@@ -106,9 +117,10 @@ int mcu_init(MCULogic *mcu, CommandPool *pool,
     /* Pre-fill the destination address for sendto. */
     memset(&mcu->mcu_addr, 0, sizeof(mcu->mcu_addr));
     mcu->mcu_addr.sin_family = AF_INET;
-    mcu->mcu_addr.sin_port   = htons(mcu_port);
+    mcu->mcu_addr.sin_port = htons(mcu_port);
 
-    if (inet_pton(AF_INET, mcu_host, &mcu->mcu_addr.sin_addr) != 1) {
+    if (inet_pton(AF_INET, mcu_host, &mcu->mcu_addr.sin_addr) != 1)
+    {
         fprintf(stderr, "mcu_init: invalid host address '%s'\n", mcu_host);
         close(mcu->sock_fd);
         mcu->sock_fd = -1;
@@ -134,7 +146,7 @@ int mcu_start(MCULogic *mcu)
 #ifdef __QNXNTO__
     struct sched_param sp;
     pthread_attr_setschedpolicy(&attr, SCHED_FIFO);
-    sp.sched_priority = 30;   /* higher than interface (20) */
+    sp.sched_priority = 30; /* higher than interface (20) */
     pthread_attr_setschedparam(&attr, &sp);
     pthread_attr_setinheritsched(&attr, PTHREAD_EXPLICIT_SCHED);
 #endif
@@ -142,7 +154,8 @@ int mcu_start(MCULogic *mcu)
     int rc = pthread_create(&mcu->thread, &attr, mcu_thread, mcu);
     pthread_attr_destroy(&attr);
 
-    if (rc != 0) {
+    if (rc != 0)
+    {
         fprintf(stderr, "mcu_start: pthread_create failed: %s\n", strerror(rc));
         mcu->running = 0;
         return -1;
@@ -169,7 +182,8 @@ void mcu_destroy(MCULogic *mcu)
     if (!mcu)
         return;
 
-    if (mcu->sock_fd >= 0) {
+    if (mcu->sock_fd >= 0)
+    {
         close(mcu->sock_fd);
         mcu->sock_fd = -1;
     }

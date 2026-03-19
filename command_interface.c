@@ -83,6 +83,8 @@ static void *interface_thread(void *arg)
         struct timespec valid_until = recv_time;
         ts_add_ms(&valid_until, freshness_ms);
 
+        // ADD DATABASE ENTRY HERE THAT WILL STORE CMD, PRIORITY, AND RECEIVE TIME
+
         /* --- Build the pool entry (ackermann bytes stay opaque). --- */
         PoolEntry entry;
         memcpy(entry.ackermann_bytes, buf, ACKERMANN_PAYLOAD_SIZE);
