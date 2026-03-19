@@ -46,16 +46,16 @@ bool UDPClient::sendData(std::vector<char>& data) {
         sizeof(m_serverAddress)
     );
 
-    return sent == data.size();
+    return static_cast<size_t>(sent) == data.size();
 }
 
-std::vector<char> UDPClient::receiveData(size_t length) {
-    std::vector<char> data;
+std::vector<uint8_t> UDPClient::receiveData(size_t length) {
+    std::vector<uint8_t> data;
     data.resize(length);
     
     socklen_t addressLength = sizeof(m_serverAddress);
 
-    recvfrom(
+    size_t receivedLength = recvfrom(
         m_socket, 
         data.data(), 
         length, 
@@ -63,6 +63,7 @@ std::vector<char> UDPClient::receiveData(size_t length) {
         reinterpret_cast<struct sockaddr*>(&m_serverAddress), 
         &addressLength
     );
+    data.resize(receivedLength);
 
     return data;
 }

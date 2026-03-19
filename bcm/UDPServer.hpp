@@ -10,8 +10,8 @@ class UDPServer {
 public:
     UDPServer(uint16_t portNumber);
     ~UDPServer();
-    std::vector<char> receiveData(size_t length, sockaddr_in& clientAddress);
-    bool sendData(std::vector<char> data, const sockaddr_in& clientAddress);
+    std::vector<uint8_t> receiveData(size_t length, sockaddr_in& clientAddress);
+    bool sendData(std::vector<uint8_t>& data, const sockaddr_in& clientAddress);
 
 private:
     uint16_t m_portNumber;

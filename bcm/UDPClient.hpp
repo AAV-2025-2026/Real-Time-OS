@@ -14,7 +14,7 @@ public:
     ~UDPClient();
 
     bool sendData(std::vector<char>& data);
-    std::vector<char> receiveData(size_t length);
+    std::vector<uint8_t> receiveData(size_t length);
 private:
     uint16_t m_portNumber;
     int m_socket;

@@ -1,4 +1,5 @@
 #include "UDPServer.hpp"
+#include <cstdint>
 #include <cstring>
 #include <netinet/in.h>
 #include <stdexcept>
@@ -31,13 +32,13 @@ UDPServer::~UDPServer() {
     }
 }
 
-std::vector<char> UDPServer::receiveData(size_t length, sockaddr_in& clientAddress) {
-    std::vector<char> data;
+std::vector<uint8_t> UDPServer::receiveData(size_t length, sockaddr_in& clientAddress) {
+    std::vector<uint8_t> data;
     data.resize(length);
 
     socklen_t addressLength = sizeof(clientAddress);
 
-    recvfrom(
+    size_t receivedLength = recvfrom(
         m_socket, 
         data.data(), 
         data.size(), 
@@ -45,11 +46,12 @@ std::vector<char> UDPServer::receiveData(size_t length, sockaddr_in& clientAddre
         reinterpret_cast<struct sockaddr*>(&clientAddress), 
         &addressLength
     );
+    data.resize(receivedLength);
 
     return data;
 }
 
-bool UDPServer::sendData(std::vector<char> data, const sockaddr_in& clientAddress) {
+bool UDPServer::sendData(std::vector<uint8_t>& data, const sockaddr_in& clientAddress) {
     ssize_t sent = sendto(
         m_socket, 
         data.data(), 
@@ -59,5 +61,5 @@ bool UDPServer::sendData(std::vector<char> data, const sockaddr_in& clientAddres
         sizeof(clientAddress)
     );
 
-    return sent == data.size();
+    return static_cast<size_t>(sent) == data.size();
 }
