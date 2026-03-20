@@ -16,7 +16,7 @@ bool sendDBMsg(const mqd_t& mq, std::string_view tableName, std::string_view id,
     2. ROS Subscribers
         a. Through UDP
         b. Through ROS 2
-    
+
 */
 class UpdateSender {
 public:
@@ -25,6 +25,7 @@ public:
     bool updateDirection(const DirectionState& newDirection);
     bool updateLocation(const LocationState& newLocation);
     bool updateGear(const Gear& newGear);
+    bool updateIMU(const IMUState& newIMU);
 
 private:
     bool updateSpeedDB(const SpeedState& newSpeed);
@@ -37,6 +38,9 @@ private:
     bool updateLocationROS(const LocationState& newLocation);
 
     bool updateGearROS(const Gear& newGear);
+
+    bool updateIMUDB(const IMUState& newIMU);
+    bool updateIMUROS(const IMUState& newIMU);
 
     static constexpr const char* DB_MQUEUE_NAME = "/db_queue";
     static constexpr const int MQ_PRIORITY = 0;

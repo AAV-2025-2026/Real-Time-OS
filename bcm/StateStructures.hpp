@@ -32,6 +32,11 @@ struct LocationState {
     double x, y;
 };
 
+struct IMUState {
+    float ang_vel_x, ang_vel_y, ang_vel_z;
+    float lin_acc_x, lin_acc_y, lin_acc_z;
+};
+
 enum class Gear : uint8_t {
     Park = 0,
     Drive = 1,
@@ -45,7 +50,7 @@ inline std::ostream& operator<<(std::ostream& os, Gear g) {
         case Gear::Drive: name = "Drive"; break;
         case Gear::Reverse: name = "Reverse"; break;
     }
-    
+
     os << name;
     return os;
 }

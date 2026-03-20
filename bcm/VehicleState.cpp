@@ -6,12 +6,34 @@
 #include <iostream>
 #include <memory>
 #include <optional>
+#include <mutex>
 
 VehicleState::VehicleState(std::shared_ptr<UDPClient> updatePublisher) {
     m_updater = std::make_shared<UpdateSender>(updatePublisher);
 }
 
+bool VehicleState::setIMU(const IMUState& newIMU) {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_imu = newIMU;
+    std::cout << "Vehicle IMU State updated to: " << newIMU.ang_vel_x << ", " << newIMU.ang_vel_y << ", " << newIMU.ang_vel_z << ". " << newIMU.lin_acc_x << ", " << newIMU.lin_acc_y << ", " << newIMU.lin_acc_z << std::endl;
+
+    bool imuUpdateSuccess = false;
+    for (uint8_t i = 0; i < 5; i++) {
+        imuUpdateSuccess = m_updater->updateIMU(m_imu->getData());
+        if (imuUpdateSuccess) {
+            break;
+        }
+        std::cerr << "Failed to update IMU information, retrying" << std::endl;
+    }
+    if (!imuUpdateSuccess) {
+        std::cerr << "Failed to update imu information too many times, aborting" << std::endl;
+    }
+
+    return imuUpdateSuccess;
+}
+
 bool VehicleState::setSpeed(const SpeedState& newSpeed) {
+    std::lock_guard<std::mutex> lock(m_mutex);
     m_speed = newSpeed;
     std::cout << "Vehicle Speed State updated to: " << newSpeed.speed << std::endl;
     bool speedUpdateSuccess = false;
@@ -50,6 +72,7 @@ bool VehicleState::setSpeed(const SpeedState& newSpeed) {
 }
 
 bool VehicleState::setDirection(const DirectionState& newDirection) {
+    std::lock_guard<std::mutex> lock(m_mutex);
     m_direction = newDirection;
     std::cout << "Vehicle Direction State updated to: " << newDirection.direction << std::endl;
     bool updateDirectionSuccess = false;
@@ -68,6 +91,7 @@ bool VehicleState::setDirection(const DirectionState& newDirection) {
 }
 
 bool VehicleState::setLocation(const LocationState& newLocation) {
+    std::lock_guard<std::mutex> lock(m_mutex);
     m_location = newLocation;
     std::cout << "Vehicle Location State updated to: " << "x: " << newLocation.x << ", y: " << newLocation.y << std::endl;
     bool updateLocationSuccess = false;

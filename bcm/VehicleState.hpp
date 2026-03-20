@@ -5,6 +5,7 @@
 #include "StateStructures.hpp"
 #include "UpdateSender.hpp"
 #include <memory>
+#include <mutex>
 
 class VehicleState {
 public:
@@ -20,15 +21,21 @@ public:
     bool setLocation(const LocationState& newLocation);
     std::optional<StateObject<LocationState>> getLocation() {return m_location;}
 
+    bool setIMU(const IMUState& newIMU);
+    std::optional<StateObject<IMUState>> getIMU() {return m_imu;}
+
     void printState();
 
 private:
     std::shared_ptr<UpdateSender> m_updater;
-    
+
+    std::mutex m_mutex;
+
     std::optional<StateObject<SpeedState>> m_speed;
     std::optional<StateObject<DirectionState>> m_direction;
     std::optional<StateObject<LocationState>> m_location;
     std::optional<StateObject<Gear>> m_gear;
+    std::optional<StateObject<IMUState>> m_imu;
 };
 
 #endif

@@ -6,10 +6,10 @@
 #include <iostream>
 #include "StateStructures.hpp"
 
-UDPUpdateReceiver::UDPUpdateReceiver(std::shared_ptr<VehicleState> vehicleState, std::shared_ptr<UDPClient> subscriber) : 
+UDPUpdateReceiver::UDPUpdateReceiver(std::shared_ptr<VehicleState> vehicleState, std::shared_ptr<UDPClient> subscriber) :
     UpdateReceiver(vehicleState),
     m_subscriber(subscriber) {
-    
+
 }
 
 void UDPUpdateReceiver::start() {
@@ -28,9 +28,9 @@ void UDPUpdateReceiver::start() {
                         break;
                     case MessageType::IMU:
                         std::cout << "Received IMU packet\n";
-                        SpeedState receivedSpeed;
-                        std::memcpy(&receivedSpeed, static_cast<void *>(&inputPacket[1]), sizeof(receivedSpeed));
-                        m_vehicleState->setSpeed(receivedSpeed);
+                        IMUState receivedIMU;
+                        std::memcpy(&receivedIMU, static_cast<void *>(&inputPacket[1]), sizeof(receivedIMU));
+                        m_vehicleState->setIMU(receivedIMU);
                         break;
                     case MessageType::COMPASS:
                         std::cout << "Received Compass packet\n";
