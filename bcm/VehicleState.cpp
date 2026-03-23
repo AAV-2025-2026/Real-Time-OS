@@ -40,6 +40,7 @@ bool VehicleState::setSpeed(const SpeedState& newSpeed) {
     for (uint8_t i = 0; i < 5; i++) { // 5 retry attempts
         speedUpdateSuccess = m_updater->updateSpeed(m_speed->getData());
         if (speedUpdateSuccess) {
+            std::cout << "Successfully updated speed" << std::endl;
             break;
         }
         std::cerr << "Failed to update the speed information, retrying" << std::endl;

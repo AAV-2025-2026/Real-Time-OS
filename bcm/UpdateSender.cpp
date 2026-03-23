@@ -63,6 +63,8 @@ bool UpdateSender::updateSpeed(const SpeedState& newSpeed) {
     if (!updateSpeedROS(newSpeed)) {
         std::cerr << "Failed to update ROS with a new speed value" << std::endl;
         success = false;
+    } else {
+        std::cout << "Successfully updated speed with ROS" << std::endl;
     }
 
     return success;

@@ -5,8 +5,13 @@
 
 enum class MessageType : uint8_t {
     GPS = 0,
-    IMU = 1,
-    COMPASS = 2
+    IMU = 1
+};
+
+enum class PublishType : uint8_t {
+    LOCATION = 0,
+    SPEED = 1,
+    GEAR = 2
 };
 
 #endif

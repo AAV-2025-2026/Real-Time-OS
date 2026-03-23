@@ -45,6 +45,7 @@ bool UDPClient::sendData(std::vector<char>& data) {
         reinterpret_cast<struct sockaddr*>(&m_serverAddress), 
         sizeof(m_serverAddress)
     );
+    std::cout << "UDP Client sent this data of this size: " << sent << std::endl;
 
     return static_cast<size_t>(sent) == data.size();
 }
