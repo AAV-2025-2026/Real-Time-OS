@@ -15,8 +15,6 @@ bool sendDBMsg(const mqd_t& mq, std::string_view tableName, std::string_view id,
     1. Database through mqueue
     2. ROS Subscribers
         a. Through UDP
-        b. Through ROS 2
-
 */
 class UpdateSender {
 public:

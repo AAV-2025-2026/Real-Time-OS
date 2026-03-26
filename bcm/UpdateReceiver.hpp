@@ -17,7 +17,6 @@ public:
 protected:
     std::shared_ptr<VehicleState> m_vehicleState;
     std::atomic_bool m_running;
-
 };
 
 #endif

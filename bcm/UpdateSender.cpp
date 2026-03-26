@@ -75,7 +75,7 @@ bool UpdateSender::updateSpeedDB(const SpeedState& newSpeed) {
     std::vector<char> data(speedString.begin(), speedString.end());
     data.push_back('\0');
 
-    return sendDBMsg(m_mqueue, DB_MQUEUE_NAME, DB_ID_NAME, data, MQ_PRIORITY);
+    return sendDBMsg(m_mqueue, DB_TABLE_NAME, DB_ID_NAME, data, MQ_PRIORITY);
 }
 
 bool UpdateSender::updateSpeedROS(const SpeedState& newSpeed) {
@@ -106,7 +106,7 @@ bool UpdateSender::updateLocationDB(const LocationState& newLocation) {
     std::vector<char> data(locationString.begin(), locationString.end());
     data.push_back('\0');
 
-    return sendDBMsg(m_mqueue, DB_MQUEUE_NAME, DB_ID_NAME, data, MQ_PRIORITY);
+    return sendDBMsg(m_mqueue, DB_TABLE_NAME, DB_ID_NAME, data, MQ_PRIORITY);
 }
 
 bool UpdateSender::updateLocationROS(const LocationState& newLocation) {
