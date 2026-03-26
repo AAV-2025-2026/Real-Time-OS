@@ -1,4 +1,5 @@
 #include "UpdateSender.hpp"
+#include "MessageStructures.hpp"
 #include "StateStructures.hpp"
 #include <cerrno>
 #include <chrono>
@@ -43,7 +44,7 @@ UpdateSender::UpdateSender(std::shared_ptr<UDPClient> publisher) : m_publisher(p
     // Setup MQueue stuff
     std::cout << "Trying to open mqueue" << std::endl;
     while (true) {
-        m_mqueue = mq_open(DB_MQUEUE_NAME, O_WRONLY);
+        m_mqueue = mq_open(DB_MQUEUE_NAME, O_WRONLY | O_NONBLOCK);
         if (m_mqueue != static_cast<mqd_t>(-1)) {
             break;
         }
@@ -66,7 +67,6 @@ bool UpdateSender::updateSpeed(const SpeedState& newSpeed) {
     } else {
         std::cout << "Successfully updated speed with ROS" << std::endl;
     }
-
     return success;
 }
 
@@ -79,36 +79,12 @@ bool UpdateSender::updateSpeedDB(const SpeedState& newSpeed) {
 }
 
 bool UpdateSender::updateSpeedROS(const SpeedState& newSpeed) {
-    std::vector<char> data(sizeof(newSpeed.speed));
-    std::memcpy(data.data(), &newSpeed.speed, sizeof(newSpeed.speed));
-    return m_publisher->sendData(data);
-}
-
-bool UpdateSender::updateDirection(const DirectionState& newDirection) {
-    bool success = true;
-    if (!updateDirectionDB(newDirection)) {
-        std::cerr << "Failed to update the database with a new direction value" << std::endl;
-        success = false;
-    }
-    if (!updateDirectionROS(newDirection)) {
-        std::cerr << "Failed to update ROS with a new direction value" << std::endl;
-        success = false;
-    }
-
-    return success;
-}
-
-bool UpdateSender::updateDirectionDB(const DirectionState& newDirection) {
-    std::string directionString = "Direction: " + std::to_string(newDirection.direction);
-    std::vector<char> data(directionString.begin(), directionString.end());
-    data.push_back('\0');
-
-    return sendDBMsg(m_mqueue, DB_MQUEUE_NAME, DB_ID_NAME, data, MQ_PRIORITY);
-}
-
-bool UpdateSender::updateDirectionROS(const DirectionState& newDirection) {
-    std::vector<char> data(sizeof(newDirection.direction));
-    std::memcpy(data.data(), &newDirection.direction, sizeof(newDirection.direction));
+    PublisherMessage<SpeedState> message;
+    message.mType = PublisherMessageType::SPEED;
+    message.data = newSpeed;
+    
+    std::vector<char> data(sizeof(message));
+    std::memcpy(data.data(), &message, sizeof(message));
     return m_publisher->sendData(data);
 }
 
@@ -134,8 +110,12 @@ bool UpdateSender::updateLocationDB(const LocationState& newLocation) {
 }
 
 bool UpdateSender::updateLocationROS(const LocationState& newLocation) {
-        std::vector<char> data(sizeof(newLocation));
-    std::memcpy(data.data(), &newLocation, sizeof(newLocation));
+    PublisherMessage<LocationState> message;
+    message.mType = PublisherMessageType::LOCATION;
+    message.data = newLocation;
+    
+    std::vector<char> data(sizeof(message));
+    std::memcpy(data.data(), &message, sizeof(message));
     return m_publisher->sendData(data);
 }
 
@@ -149,47 +129,11 @@ bool UpdateSender::updateGear(const Gear& newGear) {
 }
 
 bool UpdateSender::updateGearROS(const Gear& newGear) {
-    std::vector<char> data(sizeof(newGear));
-    std::memcpy(data.data(), &newGear, sizeof(newGear));
-    return m_publisher->sendData(data);
-}
-
-bool UpdateSender::updateIMU(const IMUState& newIMU) {
-    bool success = true;
-    if (!updateIMUDB(newIMU)) {
-        std::cerr << "Failed to update DB with new IMU value" << std::endl;
-        success = false;
-    }
-    if (!updateIMUROS(newIMU)) {
-        std::cerr << "Failed to update ROS with new IMU value" << std::endl;
-        success = false;
-    }
-
-    return success;
-}
-
-bool UpdateSender::updateIMUDB(const IMUState& newIMU) {
-    bool success = true;
-    std::string newSpeedString = "Speed: x: " + std::to_string(newIMU.lin_acc_x) + ", y: " + std::to_string(newIMU.lin_acc_y) + ", z: " + std::to_string(newIMU.lin_acc_z);
-    std::vector<char> speedData(newSpeedString.begin(), newSpeedString.end());
-    speedData.push_back('\0');
-    if (!sendDBMsg(m_mqueue, DB_MQUEUE_NAME, DB_ID_NAME, speedData, MQ_PRIORITY)) {
-        std::cerr << "Failed to send acceleration" << std::endl;
-        success = false;
-    }
-
-    std::string newDirectionString = "Angle: x: " + std::to_string(newIMU.ang_vel_x) + ", y: " + std::to_string(newIMU.ang_vel_y) + ", z: " + std::to_string(newIMU.ang_vel_z);
-    std::vector<char> directionData(newDirectionString.begin(), newDirectionString.end());
-    directionData.push_back('\0');
-    if (!sendDBMsg(m_mqueue, DB_MQUEUE_NAME, DB_ID_NAME, directionData, MQ_PRIORITY)) {
-        std::cerr << "Failed to send direction" << std::endl;
-        success = false;
-    }
-    return success;
-}
-
-bool UpdateSender::updateIMUROS(const IMUState& newIMU) {
-    std::vector<char> data(sizeof(newIMU));
-    std::memcpy(data.data(), &newIMU, sizeof(newIMU));
+    PublisherMessage<Gear> message;
+    message.mType = PublisherMessageType::GEAR;
+    message.data = newGear;
+    
+    std::vector<char> data(sizeof(message));
+    std::memcpy(data.data(), &message, sizeof(message));
     return m_publisher->sendData(data);
 }

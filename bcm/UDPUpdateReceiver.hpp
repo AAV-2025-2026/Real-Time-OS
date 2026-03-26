@@ -18,7 +18,6 @@ private:
 
     std::thread m_receiverThread;
     std::shared_ptr<UDPClient> m_subscriber;
-
 };
 
 #endif

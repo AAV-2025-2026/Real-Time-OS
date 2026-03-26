@@ -24,17 +24,8 @@ struct SpeedState {
     double speed;
 };
 
-struct DirectionState {
-    double direction;
-};
-
 struct LocationState {
     double x, y;
-};
-
-struct IMUState {
-    float ang_vel_x, ang_vel_y, ang_vel_z;
-    float lin_acc_x, lin_acc_y, lin_acc_z;
 };
 
 enum class Gear : uint8_t {
