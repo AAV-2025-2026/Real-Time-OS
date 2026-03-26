@@ -23,10 +23,12 @@ enum class PublisherMessageType : uint8_t {
     GEAR = 2
 };
 
+#pragma pack(push, 1)
 template<typename T>
 struct PublisherMessage {
     PublisherMessageType mType;
     T data;
 };
+#pragma pack(pop)
 
 #endif
