@@ -82,7 +82,7 @@ bool UpdateSender::updateSpeedROS(const SpeedState& newSpeed) {
     PublisherMessage<SpeedState> message;
     message.mType = PublisherMessageType::SPEED;
     message.data = newSpeed;
-    
+
     std::vector<char> data(sizeof(message));
     std::memcpy(data.data(), &message, sizeof(message));
     return m_publisher->sendData(data);
@@ -113,7 +113,7 @@ bool UpdateSender::updateLocationROS(const LocationState& newLocation) {
     PublisherMessage<LocationState> message;
     message.mType = PublisherMessageType::LOCATION;
     message.data = newLocation;
-    
+
     std::vector<char> data(sizeof(message));
     std::memcpy(data.data(), &message, sizeof(message));
     return m_publisher->sendData(data);
@@ -132,7 +132,7 @@ bool UpdateSender::updateGearROS(const Gear& newGear) {
     PublisherMessage<Gear> message;
     message.mType = PublisherMessageType::GEAR;
     message.data = newGear;
-    
+
     std::vector<char> data(sizeof(message));
     std::memcpy(data.data(), &message, sizeof(message));
     return m_publisher->sendData(data);

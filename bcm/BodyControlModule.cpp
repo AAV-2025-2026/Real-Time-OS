@@ -8,9 +8,9 @@
 #include <thread>
 #include "TerminalUpdateReceiver.hpp"
 
-constexpr const char* SUBSCRIBER_IP = "192.168.1.115";
+constexpr const char* SUBSCRIBER_IP = "192.168.1.104";
 constexpr const uint16_t SUBSCRIBER_PORT_NUMBER = 49200;
-constexpr const char* PUBLISHER_IP = "192.168.1.115";
+constexpr const char* PUBLISHER_IP = "192.168.1.104";
 constexpr const uint16_t PUBLISHER_PORT_NUMBER = 49200;
 
 int main() {
