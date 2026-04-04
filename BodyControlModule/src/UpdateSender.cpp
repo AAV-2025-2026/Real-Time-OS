@@ -11,7 +11,7 @@
 #include <mqueue.h>
 #include <string>
 #include <thread>
-#include "../Database/dbstruct.h"
+#include "dbstruct.h"
 #include "UDPClient.hpp"
 #include <string.h>
 #include <vector>
